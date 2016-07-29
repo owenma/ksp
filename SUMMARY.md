@@ -1,3 +1,5 @@
-# Table of content
+# Summary
 
-* [First Chapter](chapter1.md)
+* [Introduction](README.md)
+* [Redis介绍](chapter1.md)
+
