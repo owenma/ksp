@@ -17,4 +17,5 @@ make && make install
 
 
 
-备注：这边就不make install 了，直接使用make好的文件
+创建redis节点
+
