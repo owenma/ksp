@@ -10,7 +10,7 @@ Maven依赖:
 </dependency>
 
 测试1：
- public static void main(String[] args) {
+ ```public static void main(String[] args) {
         String key = "foo";
         // 这东西 可以直接看到key 的分片数，就能知道放哪个 节点
         System.out.println(JedisClusterCRC16.getSlot(key));
@@ -29,9 +29,9 @@ Maven依赖:
     12182
     bar
     bar
-    
+    ```
  测试2：
- public static void main(String[] args) {
+``` public static void main(String[] args) {
        Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         jedisClusterNodes.add(new HostAndPort("172.20.13.229", 7000));
         jedisClusterNodes.add(new HostAndPort("172.20.13.229", 7001));
@@ -46,8 +46,8 @@ Maven依赖:
             System.out.println(", get " + i +"th value in " + (System.currentTimeMillis() - start)
             + " ms");
         }
- }
- console:
+ }```
+``` console:
   set 9976th value in 1 ms, get 9976th value in 1 ms
   set 9977th value in 1 ms, get 9977th value in 1 ms
   set 9978th value in 0 ms, get 9978th value in 1 ms
@@ -73,4 +73,4 @@ Maven依赖:
   set 9998th value in 1 ms, get 9998th value in 1 ms
   set 9999th value in 1 ms, get 9999th value in 1 ms
   set 10000th value in 0 ms, get 10000th value in 1 ms
-    
+    ```
