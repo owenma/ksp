@@ -46,8 +46,8 @@ Maven依赖:
             System.out.println(", get " + i +"th value in " + (System.currentTimeMillis() - start)
             + " ms");
         }
- }```
-``` console:
+ }
+ console:
   set 9976th value in 1 ms, get 9976th value in 1 ms
   set 9977th value in 1 ms, get 9977th value in 1 ms
   set 9978th value in 0 ms, get 9978th value in 1 ms
