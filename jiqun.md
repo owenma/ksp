@@ -37,29 +37,29 @@
     可以看到生成了appendonly.aof  nodes.conf
     
     ps -ef | grep redis 查看是否启动成功
-    [root@mobancentos70 ~]# ps -ef|grep redis
+    ```[root@mobancentos70 ~]# ps -ef|grep redis
     root     20099     1  0 7月29 ?       00:09:04 redis-server 172.20.13.229:7002 [cluster]
     root     20106     1  0 7月29 ?       00:09:09 redis-server 172.20.13.229:7000 [cluster]
-    root     20121     1  0 7月29 ?       00:09:10 redis-server 172.20.13.229:7001 [cluster]
+    root     20121     1  0 7月29 ?       00:09:10 redis-server 172.20.13.229:7001 [cluster]```
     
     netstat -tnlp | grep redis 可以看到redis监听端口
-    [root@mobancentos70 ~]# netstat -tnlp | grep redis
+   ``` [root@mobancentos70 ~]# netstat -tnlp | grep redis
     tcp        0      0 172.20.13.229:17000     0.0.0.0:*        LISTEN      20106/redis-server
     tcp        0      0 172.20.13.229:17001     0.0.0.0:*        LISTEN      20121/redis-server
     tcp        0      0 172.20.13.229:17002     0.0.0.0:*        LISTEN      20099/redis-server
     tcp        0      0 172.20.13.229:7000      0.0.0.0:*        LISTEN      20106/redis-server
     tcp        0      0 172.20.13.229:7001      0.0.0.0:*        LISTEN      20121/redis-server
-    tcp        0      0 172.20.13.229:7002      0.0.0.0:*        LISTEN      20099/redis-server
+    tcp        0      0 172.20.13.229:7002      0.0.0.0:*        LISTEN      20099/redis-server```
     
     我们除了看到 配置文件中设置的端口700*    还有700*+10000  （1700*）, 前者是客户端访问的， 后者是集群内部节点之间访问的.
     
   设置iptables开放上面所有端口
-  /sbin/iptables -I INPUT -p tcp --dport 7000 -j ACCEPT
+ ``` /sbin/iptables -I INPUT -p tcp --dport 7000 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 7001 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 7002 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 17000 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 17001 -j ACCEPT
-  /sbin/iptables -I INPUT -p tcp --dport 17002 -j ACCEPT
+  /sbin/iptables -I INPUT -p tcp --dport 17002 -j ACCEPT```
     
 2）172.20.13.230(server)
    同上, 设置端口  7003  7004  7005
