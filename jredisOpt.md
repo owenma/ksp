@@ -1,6 +1,7 @@
 # jredis操作集群
 
 Maven依赖:
+```
 <dependency>
     <groupId>redis.clients</groupId>
     <artifactId>jedis</artifactId>
@@ -8,6 +9,7 @@ Maven依赖:
     <type>jar</type>
     <scope>compile</scope>
 </dependency>
+```
 
 测试1：
  ```public static void main(String[] args) {
