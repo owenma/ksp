@@ -3,7 +3,8 @@
 
 下载软件包, 登录Linux:
 
-```cd /usr/local/
+```
+cd /usr/local/
 
 wget http://download.redis.io/releases/redis-3.2.2.tar.gz
 
@@ -13,7 +14,8 @@ mv redis-3.0.3  redis
 
 cd redis
 
-make && make install```
+make && make install
+```
 
 
 
