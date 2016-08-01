@@ -12,7 +12,8 @@ Maven依赖:
 ```
 
 测试1：
- ```public static void main(String[] args) {
+ ```
+ public static void main(String[] args) {
         String key = "foo";
         // 这东西 可以直接看到key 的分片数，就能知道放哪个 节点
         System.out.println(JedisClusterCRC16.getSlot(key));
@@ -33,7 +34,8 @@ Maven依赖:
     bar
     ```
  测试2：
-``` public static void main(String[] args) {
+```
+public static void main(String[] args) {
        Set<HostAndPort> jedisClusterNodes = new HashSet<HostAndPort>();
         jedisClusterNodes.add(new HostAndPort("172.20.13.229", 7000));
         jedisClusterNodes.add(new HostAndPort("172.20.13.229", 7001));
