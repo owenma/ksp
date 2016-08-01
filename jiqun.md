@@ -54,12 +54,14 @@
     我们除了看到 配置文件中设置的端口700*    还有700*+10000  （1700*）, 前者是客户端访问的， 后者是集群内部节点之间访问的.
     
   设置iptables开放上面所有端口
- ``` /sbin/iptables -I INPUT -p tcp --dport 7000 -j ACCEPT
+ ``` 
+  /sbin/iptables -I INPUT -p tcp --dport 7000 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 7001 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 7002 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 17000 -j ACCEPT
   /sbin/iptables -I INPUT -p tcp --dport 17001 -j ACCEPT
-  /sbin/iptables -I INPUT -p tcp --dport 17002 -j ACCEPT```
+  /sbin/iptables -I INPUT -p tcp --dport 17002 -j ACCEPT
+  ```
     
 2）172.20.13.230(server)
    同上, 设置端口  7003  7004  7005
