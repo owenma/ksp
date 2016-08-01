@@ -37,10 +37,12 @@
     可以看到生成了appendonly.aof  nodes.conf
     
     ps -ef | grep redis 查看是否启动成功
-    ```[root@mobancentos70 ~]# ps -ef|grep redis
+    ```
+    [root@mobancentos70 ~]# ps -ef|grep redis
     root     20099     1  0 7月29 ?       00:09:04 redis-server 172.20.13.229:7002 [cluster]
     root     20106     1  0 7月29 ?       00:09:09 redis-server 172.20.13.229:7000 [cluster]
-    root     20121     1  0 7月29 ?       00:09:10 redis-server 172.20.13.229:7001 [cluster]```
+    root     20121     1  0 7月29 ?       00:09:10 redis-server 172.20.13.229:7001 [cluster]
+    ```
     
     netstat -tnlp | grep redis 可以看到redis监听端口
    ```
