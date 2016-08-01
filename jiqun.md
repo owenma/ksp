@@ -2,6 +2,8 @@
 
 1）172.20.13.229(server)
 
+登录Server：
+
     cd /usr/local/
 
     mkdir redis_cluster  //创建集群目录
@@ -39,11 +41,8 @@
     root     20099     1  0 7月29 ?       00:09:04 redis-server 172.20.13.229:7002 [cluster]
     root     20106     1  0 7月29 ?       00:09:09 redis-server 172.20.13.229:7000 [cluster]
     root     20121     1  0 7月29 ?       00:09:10 redis-server 172.20.13.229:7001 [cluster]
-
-    
     
     netstat -tnlp | grep redis 可以看到redis监听端口
-    
     [root@mobancentos70 ~]# netstat -tnlp | grep redis
     tcp        0      0 172.20.13.229:17000     0.0.0.0:*        LISTEN      20106/redis-server
     tcp        0      0 172.20.13.229:17001     0.0.0.0:*        LISTEN      20121/redis-server
