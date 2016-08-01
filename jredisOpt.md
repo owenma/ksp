@@ -78,3 +78,16 @@ public static void main(String[] args) {
   set 9999th value in 1 ms, get 9999th value in 1 ms
   set 10000th value in 0 ms, get 10000th value in 1 ms
     ```
+    
+测试反馈：
+
+1.集群正常，基本操作都OK
+
+2.如果某个master 挂了，比如7001, 集群依然可用，会存放到对应的salve 7004 上去。
+
+3.如果master -slave 都挂了，会导致 整个集群不可用，异常，因此最好配有M-S 的结构
+
+4.我默认配置，有rdb 和 aof 持久化，因此master 挂了，重启，数据可以从salve 上恢复
+
+5.存放的key 会根据返回的位置，放在不同的slot 上，实现均衡
+
