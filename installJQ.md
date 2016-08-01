@@ -17,11 +17,11 @@
 ```
     
  
-解释下， --replicas  1  表示 自动为每一个master节点分配一个slave节点    上面有6个节点，程序会按照一定规则生成 3个master（主）3个slave(从)
+   解释下， --replicas  1  表示 自动为每一个master节点分配一个slave节点    上面有6个节点，程序会按照一定规则生成 3个master（主）3个slave(从)
 
     前面已经提醒过的 防火墙一定要开放监听的端口，否则会创建失败。
     
-    运行中，提示Can I set the above configuration? (type 'yes' to accept): yes    //输入yes
+   运行中，提示Can I set the above configuration? (type 'yes' to accept): yes    //输入yes
     
     创建过程中的显示：
    ```
