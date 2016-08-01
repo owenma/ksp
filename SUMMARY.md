@@ -6,5 +6,5 @@
    * [创建节点](jiqun.md)
    * [创建集群](installJQ.md)
    * [集群测试](testJQ.md)
-   * jredis操作集群
+   * [jredis操作集群](jredisOpt.md)
 
