@@ -17,5 +17,7 @@ make && make install
 
 
 
-创建redis节点
+
+
+
 
