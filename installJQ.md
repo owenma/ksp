@@ -21,7 +21,8 @@
     运行中，提示Can I set the above configuration? (type 'yes' to accept): yes    //输入yes
     
     创建过程中的显示：
-   ``` [root@mobancentos70 redis]# /usr/local/redis/src/redis-trib.rb  create  --replicas  1  172.20.13.229:7000  172.20.13.229:7001  172.20.13.230:7003  172.20.13.230:7004  172.20.13.230:7005  172.20.13.229:7002
+   ```
+   [root@mobancentos70 redis]# /usr/local/redis/src/redis-trib.rb  create  --replicas  1  172.20.13.229:7000  172.20.13.229:7001  172.20.13.230:7003  172.20.13.230:7004  172.20.13.230:7005  172.20.13.229:7002
 >>> Creating cluster
 >>> Performing hash slots allocation on 6 nodes...
 Using 3 masters:
@@ -67,7 +68,8 @@ M: 7414943a4513eee521fc0b7e37985f7d07fb5a4e 172.20.13.229:7002
 [OK] All nodes agree about slots configuration.
 >>> Check for open slots...
 >>> Check slots coverage...
-[OK] All 16384 slots covered.```
+[OK] All 16384 slots covered.
+```
 
 检查集群状态：
 
