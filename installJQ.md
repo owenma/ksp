@@ -3,7 +3,8 @@
     官方提供了一个工具：redis-trib.rb  （/usr/local/redis/src/redis-trib.rb） 
 要运行这个我们首先要安装一下 Ruby：
 
-    ``` yum -y install ruby ruby-devel rubygems rpm-build```
+   
+    yum -y install ruby ruby-devel rubygems rpm-build
 
   再用 gem 这个命令来安装 redis接口：
 
@@ -11,7 +12,9 @@
  
    确认所有的节点都启动后，接下来使用参数create 创建：
  
-    ``` /usr/local/redis/src/redis-trib.rb  create  --replicas  1  172.20.13.229:7000  172.20.13.229:7001  172.20.13.230:7003  172.20.13.230:7004  172.20.13.230:7005  172.20.13.229:7002```
+    ```
+    /usr/local/redis/src/redis-trib.rb  create  --replicas  1  172.20.13.229:7000  172.20.13.229:7001  172.20.13.230:7003  172.20.13.230:7004  172.20.13.230:7005  172.20.13.229:7002
+    ```
  
     解释下， --replicas  1  表示 自动为每一个master节点分配一个slave节点    上面有6个节点，程序会按照一定规则生成 3个master（主）3个slave(从)
 
