@@ -1,0 +1,330 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>集群测试 · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.0.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="jredisOpt.html" />
+    
+    
+    <link rel="prev" href="installJQ.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="redis_install.html">
+            
+                <a href="redis_install.html">
+            
+                    
+                    Redis安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="jiqun.html">
+            
+                <a href="jiqun.html">
+            
+                    
+                    创建节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="installJQ.html">
+            
+                <a href="installJQ.html">
+            
+                    
+                    创建集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="testJQ.html">
+            
+                <a href="testJQ.html">
+            
+                    
+                    集群测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="jredisOpt.html">
+            
+                <a href="jredisOpt.html">
+            
+                    
+                    jredis操作集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >集群测试</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x96C6;&#x7FA4;&#x6D4B;&#x8BD5;">&#x96C6;&#x7FA4;&#x6D4B;&#x8BD5;</h1>
+<p>&#x6D4B;&#x8BD5; Redis &#x96C6;&#x7FA4;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5C31;&#x662F;&#x4F7F;&#x7528; redis-rb-cluster &#x6216;&#x8005; redis-cli &#xFF0C; &#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; redis-cli &#x4E3A;&#x4F8B;&#x6765;&#x8FDB;&#x884C;&#x6F14;&#x793A;&#xFF1A;</p>
+<pre><code>   [root@mobancentos70 redis_cluster]# redis-cli -c -h 172.20.13.229 -p 7000
+    172.20.13.229:7000&gt; set foo bar
+    -&gt; Redirected to slot [12182] located at 172.20.13.229:7001
+    OK
+    172.20.13.229:7001&gt; set hello world
+    -&gt; Redirected to slot [866] located at 172.20.13.229:7000
+    OK
+    172.20.13.229:7000&gt; get foo
+    -&gt; Redirected to slot [12182] located at 172.20.13.229:7001
+    &quot;bar&quot;
+    172.20.13.229:7001&gt; get hello
+    -&gt; Redirected to slot [866] located at 172.20.13.229:7000
+    &quot;world&quot;
+    172.20.13.229:7000&gt;
+</code></pre><p>redis-cli &#x5BF9;&#x96C6;&#x7FA4;&#x7684;&#x652F;&#x6301;&#x662F;&#x975E;&#x5E38;&#x57FA;&#x672C;&#x7684;&#xFF0C; &#x6240;&#x4EE5;&#x5B83;&#x603B;&#x662F;&#x4F9D;&#x9760; Redis &#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x6765;&#x5C06;&#x5B83;&#x8F6C;&#x5411;&#xFF08;redirect&#xFF09;&#x81F3;&#x6B63;&#x786E;&#x7684;&#x8282;&#x70B9;&#x3002;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#xFF08;serious&#xFF09;&#x96C6;&#x7FA4;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x8BE5;&#x505A;&#x5F97;&#x6BD4;&#x8FD9;&#x66F4;&#x597D;&#xFF1A; &#x5B83;&#x5E94;&#x8BE5;&#x7528;&#x7F13;&#x5B58;&#x8BB0;&#x5F55;&#x8D77;&#x54C8;&#x5E0C;&#x69FD;&#x4E0E;&#x8282;&#x70B9;&#x5730;&#x5740;&#x4E4B;&#x95F4;&#x7684;&#x6620;&#x5C04;&#xFF08;map&#xFF09;&#xFF0C; &#x4ECE;&#x800C;&#x76F4;&#x63A5;&#x5C06;&#x547D;&#x4EE4;&#x53D1;&#x9001;&#x5230;&#x6B63;&#x786E;&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x9762;&#x3002;&#x8FD9;&#x79CD;&#x6620;&#x5C04;&#x53EA;&#x4F1A;&#x5728;&#x96C6;&#x7FA4;&#x7684;&#x914D;&#x7F6E;&#x51FA;&#x73B0;&#x67D0;&#x4E9B;&#x4FEE;&#x6539;&#x65F6;&#x53D8;&#x5316;&#xFF0C; &#x6BD4;&#x5982;&#x8BF4;&#xFF0C; &#x5728;&#x4E00;&#x6B21;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#xFF08;failover&#xFF09;&#x4E4B;&#x540E;&#xFF0C; &#x6216;&#x8005;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x5458;&#x901A;&#x8FC7;&#x6DFB;&#x52A0;&#x8282;&#x70B9;&#x6216;&#x79FB;&#x9664;&#x8282;&#x70B9;&#x6765;&#x4FEE;&#x6539;&#x4E86;&#x96C6;&#x7FA4;&#x7684;&#x5E03;&#x5C40;&#xFF08;layout&#xFF09;&#x4E4B;&#x540E;&#xFF0C; &#x8BF8;&#x5982;&#x6B64;&#x7C7B;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="installJQ.html" class="navigation navigation-prev " aria-label="Previous page: 创建集群">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="jredisOpt.html" class="navigation navigation-next " aria-label="Next page: jredis操作集群">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"集群测试","level":"1.3.3","depth":2,"next":{"title":"jredis操作集群","level":"1.3.4","depth":2,"path":"jredisOpt.md","ref":"jredisOpt.md","articles":[]},"previous":{"title":"创建集群","level":"1.3.2","depth":2,"path":"installJQ.md","ref":"installJQ.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"testJQ.md","mtime":"2016-08-01T05:36:28.470Z","type":"markdown"},"gitbook":{"version":"3.0.3","time":"2016-08-03T08:32:39.018Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+

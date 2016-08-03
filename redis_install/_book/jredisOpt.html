@@ -1,0 +1,385 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <title>jredis操作集群 · GitBook</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.0.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="testJQ.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    Redis介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="redis_install.html">
+            
+                <a href="redis_install.html">
+            
+                    
+                    Redis安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="jiqun.html">
+            
+                <a href="jiqun.html">
+            
+                    
+                    创建节点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="installJQ.html">
+            
+                <a href="installJQ.html">
+            
+                    
+                    创建集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="testJQ.html">
+            
+                <a href="testJQ.html">
+            
+                    
+                    集群测试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="jredisOpt.html">
+            
+                <a href="jredisOpt.html">
+            
+                    
+                    jredis操作集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >jredis操作集群</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="jredis&#x64CD;&#x4F5C;&#x96C6;&#x7FA4;">jredis&#x64CD;&#x4F5C;&#x96C6;&#x7FA4;</h1>
+<p>Maven&#x4F9D;&#x8D56;:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;redis.clients&lt;/groupId&gt;
+    &lt;artifactId&gt;jedis&lt;/artifactId&gt;
+    &lt;version&gt;2.7.2&lt;/version&gt;
+    &lt;type&gt;jar&lt;/type&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><p>&#x6D4B;&#x8BD5;1&#xFF1A;</p>
+<pre><code> public static void main(String[] args) {
+        String key = &quot;foo&quot;;
+        // &#x8FD9;&#x4E1C;&#x897F; &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x770B;&#x5230;key &#x7684;&#x5206;&#x7247;&#x6570;&#xFF0C;&#x5C31;&#x80FD;&#x77E5;&#x9053;&#x653E;&#x54EA;&#x4E2A; &#x8282;&#x70B9;
+        System.out.println(JedisClusterCRC16.getSlot(key));
+        Set&lt;HostAndPort&gt; jedisClusterNodes = new HashSet&lt;HostAndPort&gt;();
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.229&quot;, 7000));
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.229&quot;, 7001));
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.230&quot;, 7003));
+        // 3&#x4E2A;master &#x8282;&#x70B9;
+        JedisCluster jc = new JedisCluster(jedisClusterNodes);
+        System.out.println(jc.get(key));
+        jc.setnx(key, &quot;bar&quot;);
+        String value = jc.get(key);
+        System.out.println(value);
+    }
+  console&#xFF1A;  
+    12182
+    bar
+    bar
+</code></pre><p> &#x6D4B;&#x8BD5;2&#xFF1A;</p>
+<pre><code>public static void main(String[] args) {
+       Set&lt;HostAndPort&gt; jedisClusterNodes = new HashSet&lt;HostAndPort&gt;();
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.229&quot;, 7000));
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.229&quot;, 7001));
+        jedisClusterNodes.add(new HostAndPort(&quot;172.20.13.230&quot;, 7003));
+        JedisCluster jc = new JedisCluster(jedisClusterNodes);
+        for (int i = 1; i &lt;= 10000; i++) {
+            long start = System.currentTimeMillis();
+            jc.set(&quot;k:&quot; + i, &quot;v&quot; + i);
+            System.out.print(&quot;set &quot; + i +&quot;th value in &quot; + (System.currentTimeMillis() - start) + &quot; ms&quot;);
+            start = System.currentTimeMillis();
+            jc.get(&quot;k:&quot; + i);
+            System.out.println(&quot;, get &quot; + i +&quot;th value in &quot; + (System.currentTimeMillis() - start)
+            + &quot; ms&quot;);
+        }
+ }
+ console:
+  set 9976th value in 1 ms, get 9976th value in 1 ms
+  set 9977th value in 1 ms, get 9977th value in 1 ms
+  set 9978th value in 0 ms, get 9978th value in 1 ms
+  set 9979th value in 1 ms, get 9979th value in 1 ms
+  set 9980th value in 1 ms, get 9980th value in 1 ms
+  set 9981th value in 1 ms, get 9981th value in 0 ms
+  set 9982th value in 1 ms, get 9982th value in 1 ms
+  set 9983th value in 1 ms, get 9983th value in 0 ms
+  set 9984th value in 1 ms, get 9984th value in 1 ms
+  set 9985th value in 1 ms, get 9985th value in 0 ms
+  set 9986th value in 1 ms, get 9986th value in 1 ms
+  set 9987th value in 1 ms, get 9987th value in 0 ms
+  set 9988th value in 1 ms, get 9988th value in 1 ms
+  set 9989th value in 1 ms, get 9989th value in 1 ms
+  set 9990th value in 1 ms, get 9990th value in 1 ms
+  set 9991th value in 1 ms, get 9991th value in 1 ms
+  set 9992th value in 1 ms, get 9992th value in 1 ms
+  set 9993th value in 0 ms, get 9993th value in 1 ms
+  set 9994th value in 1 ms, get 9994th value in 1 ms
+  set 9995th value in 0 ms, get 9995th value in 1 ms
+  set 9996th value in 2 ms, get 9996th value in 0 ms
+  set 9997th value in 1 ms, get 9997th value in 1 ms
+  set 9998th value in 1 ms, get 9998th value in 1 ms
+  set 9999th value in 1 ms, get 9999th value in 1 ms
+  set 10000th value in 0 ms, get 10000th value in 1 ms
+</code></pre><p>&#x6D4B;&#x8BD5;&#x53CD;&#x9988;&#xFF1A;</p>
+<p>1.&#x96C6;&#x7FA4;&#x6B63;&#x5E38;&#xFF0C;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x90FD;OK</p>
+<p>2.&#x5982;&#x679C;&#x67D0;&#x4E2A;master &#x6302;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;7001, &#x96C6;&#x7FA4;&#x4F9D;&#x7136;&#x53EF;&#x7528;&#xFF0C;&#x4F1A;&#x5B58;&#x653E;&#x5230;&#x5BF9;&#x5E94;&#x7684;salve 7004 &#x4E0A;&#x53BB;&#x3002;</p>
+<p>3.&#x5982;&#x679C;master -slave &#x90FD;&#x6302;&#x4E86;&#xFF0C;&#x4F1A;&#x5BFC;&#x81F4; &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x5F02;&#x5E38;&#xFF0C;&#x56E0;&#x6B64;&#x6700;&#x597D;&#x914D;&#x6709;M-S &#x7684;&#x7ED3;&#x6784;</p>
+<p>4.&#x6211;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF0C;&#x6709;rdb &#x548C; aof &#x6301;&#x4E45;&#x5316;&#xFF0C;&#x56E0;&#x6B64;master &#x6302;&#x4E86;&#xFF0C;&#x91CD;&#x542F;&#xFF0C;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x4ECE;salve &#x4E0A;&#x6062;&#x590D;</p>
+<p>5.&#x5B58;&#x653E;&#x7684;key &#x4F1A;&#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x653E;&#x5728;&#x4E0D;&#x540C;&#x7684;slot &#x4E0A;&#xFF0C;&#x5B9E;&#x73B0;&#x5747;&#x8861;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="testJQ.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 集群测试">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"jredis操作集群","level":"1.3.4","depth":2,"previous":{"title":"集群测试","level":"1.3.3","depth":2,"path":"testJQ.md","ref":"testJQ.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"jredisOpt.md","mtime":"2016-08-01T06:53:27.326Z","type":"markdown"},"gitbook":{"version":"3.0.3","time":"2016-08-03T08:32:39.018Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/buttons.js"></script>
+        
+    
+
+    </body>
+</html>
+
